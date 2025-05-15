@@ -1,0 +1,52 @@
+#root {
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(45deg, #000000, #8a8a8a, #070707);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  gap: 10px;
+}
+
+.cardapio-header {
+  width: 100%;
+  background-color: #222;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.titulo {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.menu li:hover {
+  color: #ffcc00;
+}
+
