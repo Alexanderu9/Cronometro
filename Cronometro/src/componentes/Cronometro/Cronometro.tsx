@@ -1,37 +1,38 @@
 import { useState, useEffect } from "react";
 import "./Cronometro.css";
-export default function Timer() {
-    const [seconds, setSeconds] = useState(0);
-    const [correndo, setRunning] = useState(false);
+
+function Cronometro() {
+    const [segundos, setSegundos] = useState(0);
+    const [ativo, setAtivo] = useState(false);
 
     useEffect(() => {
-        if (!correndo) return;
+        if (!ativo) return;
 
-        const interval = setInterval(() => {
-            setSeconds((prev) => prev + 1);
+        const intervalo = setInterval(() => {
+            setSegundos((anterior) => anterior + 1);
         }, 1000);
 
-        return () => clearInterval(interval);
-    }, [correndo]);
+        return () => clearInterval(intervalo);
+    }, [ativo]);
 
-    const parar = () => setRunning(false);
-    const resetear = () => {
-        setSeconds(0);
-        setRunning(false);
+    const iniciar = () => setAtivo(true);
+    const parar = () => setAtivo(false);
+    const zerar = () => {
+        setSegundos(0);
+        setAtivo(false);
     };
-    const start = () => setRunning(true);
 
     return (
         <div className="temporization">
             <div className="seconds">
                 <h1>Temporizador em segundos</h1>
-                <p className="number">{seconds}</p>
-                <p>Secondos</p>
+                <p className="number">{segundos}</p>
+                <p>Segundos</p>
             </div>
             <div className="buttons">
-                <button onClick={start}>Iniciar</button>
+                <button onClick={iniciar}>Iniciar</button>
                 <button onClick={parar}>Parar</button>
-                <button onClick={resetear}>Zerar</button>
+                <button onClick={zerar}>Zerar</button>
             </div>
             <div className="Nomes">
                 <h2>Desenvolvido por:</h2>
@@ -42,3 +43,5 @@ export default function Timer() {
         </div>
     );
 }
+
+export default Cronometro
